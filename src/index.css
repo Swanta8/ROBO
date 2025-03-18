@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #0A0A2F;
+  --secondary: #6E44FF;
+  --accent: #00F5FF;
+  --gradient-start: #0A0A2F;
+  --gradient-mid: #1A1A4F;
+  --gradient-end: #2A2A6F;
+}
+
+:root[class~="dark"] {
+  --primary: #0A0A2F;
+  --secondary: #6E44FF;
+  --accent: #00F5FF;
+  --gradient-start: #0A0A2F;
+  --gradient-mid: #1A1A4F;
+  --gradient-end: #2A2A6F;
+}
+
+:root:not([class~="dark"]) {
+  --primary: #FF4D4D;
+  --secondary: #FFB800;
+  --accent: #FF0066;
+  --gradient-start: #FFF5F5;
+  --gradient-mid: #FFEBEB;
+  --gradient-end: #FFE0E0;
+}
+
+body {
+  @apply bg-gradient-to-br from-[var(--gradient-start)] via-[var(--gradient-mid)] to-[var(--gradient-end)] text-gray-900 dark:text-white;
+  font-family: 'Inter', sans-serif;
+  cursor: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.btn {
+  font-family: 'Outfit', sans-serif;
+}
+
+.mesh-gradient {
+  background-color: var(--gradient-start);
+  background-image: 
+    radial-gradient(at 40% 20%, rgba(110, 68, 255, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(0, 245, 255, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(110, 68, 255, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgba(0, 245, 255, 0.05) 0px, transparent 50%),
+    radial-gradient(at 20% 80%, rgba(110, 68, 255, 0.08) 0px, transparent 50%);
+  background-size: 120% 120%;
+  background-position: center;
+  transition: all 0.5s ease;
+}
+
+.light-mesh-gradient {
+  background-color: var(--gradient-start);
+  background-image: 
+    radial-gradient(at 40% 20%, rgba(255, 184, 0, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(255, 0, 102, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(255, 184, 0, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgba(255, 0, 102, 0.05) 0px, transparent 50%),
+    radial-gradient(at 20% 80%, rgba(255, 184, 0, 0.08) 0px, transparent 50%);
+  background-size: 120% 120%;
+  background-position: center;
+  transition: all 0.5s ease;
+}
+
+.custom-cursor {
+  @apply fixed w-10 h-10 pointer-events-none mix-blend-difference z-50;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+  border-radius: 50%;
+}
+
+.custom-cursor.hover {
+  width: 60px;
+  height: 60px;
+}
+
+.spline-viewer {
+  @apply w-full h-[80vh] max-w-6xl mx-auto;
+  min-height: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+.spline-viewer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, var(--gradient-start) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.floating-taskbar {
+  @apply fixed w-full z-50 transition-all duration-300;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 47, 0.85),
+    rgba(26, 26, 79, 0.85)
+  );
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 1rem;
+  width: calc(100% - 2rem);
+  border-radius: 1rem;
+  transform: translateY(0);
+}
+
+.nav-link-floating {
+  @apply px-4 py-2 transition-all duration-300 relative text-white opacity-90 hover:opacity-100;
+}
+
+.nav-link-floating::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300;
+  background-color: var(--accent);
+}
+
+.nav-link-floating:hover::after {
+  @apply w-full;
+}
+
+.theme-toggle-btn {
+  @apply p-2 rounded-full transition-all duration-300;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu-btn {
+  @apply md:hidden p-2 rounded-full transition-all duration-300;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu {
+  @apply md:hidden backdrop-blur-lg;
+  background: rgba(10, 10, 47, 0.95);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
+}
+
+.mobile-menu-link {
+  @apply block px-4 py-3 rounded-md transition-all duration-300 text-white opacity-90 hover:opacity-100;
+}
+
+.connect-btn {
+  @apply fixed bottom-8 right-8 p-4 rounded-full shadow-lg transition-all duration-300 transform;
+  background: linear-gradient(135deg, var(--secondary), var(--accent));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.connect-btn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+@layer components {
+  .btn-primary {
+    @apply border-2 px-8 py-3 rounded-full font-medium transition-all duration-300 transform;
+    border-color: var(--secondary);
+    color: var(--secondary);
+  }
+  
+  .btn-primary:hover {
+    @apply text-white border-transparent;
+    background-color: var(--secondary);
+  }
+  
+  .btn-secondary {
+    @apply border-2 px-8 py-3 rounded-full font-medium transition-all duration-300 transform;
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  
+  .btn-secondary:hover {
+    @apply text-white border-transparent;
+    background-color: var(--accent);
+  }
+
+  .project-card-link {
+    @apply inline-block w-full text-center px-6 py-3 rounded-lg transition-all duration-300;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+  }
+  
+  .project-card-link:hover {
+    background-color: var(--secondary);
+    color: white;
+  }
+}
