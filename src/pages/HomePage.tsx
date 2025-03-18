@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Spline from '@splinetool/react-spline';
 import { useNavigate } from 'react-router-dom';
@@ -233,9 +233,9 @@ function HomePage({ isDarkMode }: HomePageProps) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { number: "50+", label: "Projects Completed" },
-              { number: "30+", label: "Happy Clients" },
+              { number: "1+", label: "Happy Clients" },
               { number: "5+", label: "Years Experience" },
-              { number: "100%", label: "Success Rate" },
+              { number: "1000%", label: "Success Rate" },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -315,7 +315,7 @@ function HomePage({ isDarkMode }: HomePageProps) {
               <h4 className="text-lg font-semibold mb-4 text-white">Connect</h4>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/Swanta8"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
@@ -323,7 +323,7 @@ function HomePage({ isDarkMode }: HomePageProps) {
                   <Github size={20} className="text-gray-300 hover:text-white transition-colors" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://linkedin.com/in/jimme-jon-ming-3b91b2188/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
